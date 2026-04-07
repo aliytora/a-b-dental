@@ -1,26 +1,29 @@
 <?php
-require_once 'config.php';
+// require_once 'config.php';   // ВРЕМЕННО ОТКЛЮЧЕНО
 require_once 'header.php';
 
-// Сохранение статистики
-$ip = $_SERVER['REMOTE_ADDR'];
-$page = $_SERVER['REQUEST_URI'];
-$stmt = $conn->prepare("INSERT INTO visits (ip_address, page) VALUES (?, ?)");
-$stmt->bind_param("ss", $ip, $page);
-$stmt->execute();
+// Сохранение статистики (ВРЕМЕННО ОТКЛЮЧЕНО)
+// $ip = $_SERVER['REMOTE_ADDR'];
+// $page = $_SERVER['REQUEST_URI'];
+// $stmt = $conn->prepare("INSERT INTO visits (ip_address, page) VALUES (?, ?)");
+// $stmt->bind_param("ss", $ip, $page);
+// $stmt->execute();
 
-// Получаем все категории для аккордеона
-$categories = $conn->query("SELECT * FROM categories ORDER BY parent_id, sort_order");
-$tree = [];
-while ($cat = $categories->fetch_assoc()) {
-    if ($cat['parent_id'] == 0) {
-        $tree[$cat['id']] = $cat;
-        $tree[$cat['id']]['children'] = [];
-    } else {
-        $tree[$cat['parent_id']]['children'][] = $cat;
-    }
-}
-?>
+// Получаем все категории для аккордеона (ВРЕМЕННО ОТКЛЮЧЕНО)
+// $categories = $conn->query("SELECT * FROM categories ORDER BY parent_id, sort_order");
+// $tree = [];
+// while ($cat = $categories->fetch_assoc()) {
+//     if ($cat['parent_id'] == 0) {
+//         $tree[$cat['id']] = $cat;
+//         $tree[$cat['id']]['children'] = [];
+//     } else {
+//         $tree[$cat['parent_id']]['children'][] = $cat;
+//     }
+// }
+
+// Временно добавим проверку, что PHP работает
+echo "<!-- Сайт a b dental работает -->";
+?> 
 
 <section class="hero" id="home">
     <div class="container hero-content">
