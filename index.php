@@ -78,32 +78,31 @@ echo "<!-- Сайт a b dental работает -->";
             <div class="section-divider"></div>
         </div>
         
-      <?php if (!empty($tree) && is_array($tree)): ?>
-    <div class="catalog-flex">
-        <div class="catalog-sidebar">
-            <h3><i class="fas fa-bars" aria-hidden="true"></i> Категории</h3>
-            <ul class="accordion-list">
-                <?php foreach ($tree as $cat): ?>
-                    <li class="accordion-item">
-                        <div class="accordion-header" data-cat-id="<?php echo $cat['id']; ?>" data-cat-name="<?php echo htmlspecialchars($cat['name']); ?>" role="button" tabindex="0" aria-label="Открыть категорию <?php echo htmlspecialchars($cat['name']); ?>">
-                            <span><i class="fas fa-folder" aria-hidden="true"></i> <?php echo htmlspecialchars($cat['name']); ?></span>
+        <div class="catalog-flex">
+            <div class="catalog-sidebar">
+                <h3><i class="fas fa-bars" aria-hidden="true"></i> Категории</h3>
+                <ul class="accordion-list">
+                    <?php foreach ($tree as $cat): ?>
+                        <li class="accordion-item">
+                            <div class="accordion-header" data-cat-id="<?php echo $cat['id']; ?>" data-cat-name="<?php echo htmlspecialchars($cat['name']); ?>" role="button" tabindex="0" aria-label="Открыть категорию <?php echo htmlspecialchars($cat['name']); ?>">
+                                <span><i class="fas fa-folder" aria-hidden="true"></i> <?php echo htmlspecialchars($cat['name']); ?></span>
+                                <?php if (count($cat['children']) > 0): ?>
+                                    <i class="fas fa-chevron-down accordion-icon" aria-hidden="true"></i>
+                                <?php endif; ?>
+                            </div>
                             <?php if (count($cat['children']) > 0): ?>
-                                <i class="fas fa-chevron-down accordion-icon" aria-hidden="true"></i>
+                                <ul class="accordion-submenu">
+                                    <?php foreach ($cat['children'] as $sub): ?>
+                                        <li class="submenu-item" data-cat-id="<?php echo $sub['id']; ?>" data-cat-name="<?php echo htmlspecialchars($sub['name']); ?>" role="button" tabindex="0" aria-label="Выбрать подкатегорию <?php echo htmlspecialchars($sub['name']); ?>">
+                                            <i class="fas fa-file" aria-hidden="true"></i> <?php echo htmlspecialchars($sub['name']); ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
                             <?php endif; ?>
-                        </div>
-                        <?php if (count($cat['children']) > 0): ?>
-                            <ul class="accordion-submenu">
-                                <?php foreach ($cat['children'] as $sub): ?>
-                                    <li class="submenu-item" data-cat-id="<?php echo $sub['id']; ?>" data-cat-name="<?php echo htmlspecialchars($sub['name']); ?>" role="button" tabindex="0" aria-label="Выбрать подкатегорию <?php echo htmlspecialchars($sub['name']); ?>">
-                                        <i class="fas fa-file" aria-hidden="true"></i> <?php echo htmlspecialchars($sub['name']); ?>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        <?php endif; ?>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
             
             <div class="catalog-products">
                 <div class="catalog-header-info">
