@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin.php
+Disallow: /config.php
+Disallow: /admin_login.php
+Sitemap: https://ab_dental.ru/sitemap.xml
